@@ -1,6 +1,6 @@
 import saveAs from "file-saver";
 import { Paragraph ,Document,Packer,LevelFormat,AlignmentType,createPa } from 'docx'
-export function exportWordDocx(data){
+export function exportWordDocx(data,name){
     console.log(data,'1111111111111');
     let sections = []
     if (data) {
@@ -51,7 +51,7 @@ export function exportWordDocx(data){
     });
     Packer.toBlob(doc).then(blob => {
         console.log(blob);
-        saveAs(blob, "example.docx");
+        saveAs(blob, `${name.slice(0, -5)}.docx`);
         console.log("Document created successfully");
       });
 }

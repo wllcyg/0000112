@@ -41,13 +41,13 @@ export default {
     },
     toWorld(){
       this.readFileContent(this.files).then(content => {
-        console.log(XLSX,'2222')
+        console.log(this.files,'2222')
         const workbook = XLSX.read(content, { type: 'binary' });
         console.log(workbook,'1111')
         const sheetName = workbook.SheetNames[0]; // 获取第一个工作表的名字
         const worksheet = workbook.Sheets[sheetName];
         const data = XLSX.utils.sheet_to_json(worksheet); // 将工作表转换为JSON对象数组
-        exportWordDocx(data)
+        exportWordDocx(data,this.files.name)
         // 在此处使用转换后的JSON数据进行后续处理
       });
     },
